@@ -1,0 +1,84 @@
+<mat-card>
+
+    <mat-card-title>Nueva Dirección</mat-card-title>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+        <form #direccionForm="ngForm">
+            <div layout="row">
+                <mat-form-field fles>
+                    <input matInput
+                     [(ngModel)]="direccion.codigo"
+                     #elementCodigoControl="ngModel"
+                     type="number"
+                     name="Codigo"
+                     placeholder="Codigo"
+                     required>
+                     <mat-hint alig="start">
+                        <span [hidden]="elementCodigoControl.pristine || !elementCodigoControl.errors?.required" class="tc-red-600"> Requerido
+						</span>
+                     </mat-hint>
+                </mat-form-field>
+            </div>
+
+            <div layout="row">
+                <mat-form-field fles>
+                    <input matInput
+                     [(ngModel)]="direccion.callePrincipal"
+                     #elementCPControl="ngModel"
+                     type="text"
+                     name="CallePrincipal"
+                     maxlength="50"
+                     placeholder="Calle Principal"
+                     required>
+                     <mat-hint alig="start">
+                        <span [hidden]="elementCPControl.pristine || !elementCPControl.errors?.required" class="tc-red-600"> Requerido
+						</span>
+                     </mat-hint>
+                </mat-form-field>
+            </div>
+
+            <div layout="row">
+                <mat-form-field fles>
+                    <input matInput
+                     [(ngModel)]="direccion.calleSecundaria"
+                     #elementCSControl="ngModel"
+                     type="text"
+                     name="CalleSecundaria"
+                     maxlength="50"
+                     placeholder="Calle Secundaria"
+                     required>
+                     <mat-hint alig="start">
+                        <span [hidden]="elementCSControl.pristine || !elementCSControl.errors?.required" class="tc-red-600"> Requerido
+						</span>
+                     </mat-hint>
+                </mat-form-field>
+            </div>
+
+            <div layout="row">
+                <mat-form-field fles>
+                    <input matInput
+                     [(ngModel)]="direccion.numeroCasa"
+                     #elementnumeroCasaControl="ngModel"
+                     type="text"
+                     name="numeroCasa"
+                     maxlength="10"
+                     placeholder="Numero de Casa"
+                     required>
+                     <mat-hint alig="start">
+                        <span [hidden]="elementnumeroCasaControl.pristine || !elementnumeroCasaControl.errors?.required" class="tc-red-600"> Requerido
+						</span>
+                     </mat-hint>
+                </mat-form-field>
+            </div>
+        </form>
+    </mat-card-content>
+    <mat-divider></mat-divider>
+    <mat-card-actions>
+		<button mat-button [disabled]="!direccionForm.valid" color="primary" (click)="createDireccion()">
+		Guardar </button>
+		<button mat-button (click)="redirect()"> 
+		Volver </button>
+	</mat-card-actions>
+
+
+</mat-card>

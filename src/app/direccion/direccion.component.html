@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<style>
+ #inferior{
+    color: #FFF;
+    background: #000;
+    position:absolute; /*El div será ubicado con relación a la pantalla*/
+    left:92%; /*A la derecha deje un espacio de 0px*/
+    right:0px; /*A la izquierda deje un espacio de 0px*/
+    bottom:5%; /*Abajo deje un espacio de 0px*/
+    height:50px; /*alto del div*/
+    z-index:0;
+ 
+ }
+
+</style>
+<mat-card>
+    <ng-template tdLoading="direccion.list">
+        <mat-list class="will-load">
+            <div class="pad"  *ngIf="direcciones?.length === 0" layout="row" layout-align="center">
+                <h3>No hay direcciones para mostrar</h3>
+            </div>
+            <ng-template let-dire let-last="last" ngFor [ngForOf]="direcciones">
+                <mat-list-item>
+                    <mat-icon matListAvatar><a class="fas fa-map-marked-alt" style="font-size: 30px;"></a></mat-icon>
+                    <h3 matLine><span style="font-weight: bold; font-size: 20px;">ID: {{dire.codigo}}</span></h3>
+                    <h3 matLine><span style="font-weight: bold;">Calle Principal: </span>{{dire.callePrincipal}}</h3>
+                    <h3 matLine><span style="font-weight: bold;">Calle Secundaria: </span>{{dire.calleSecundaria}}</h3>
+                    <h3 matLine><span style="font-weight: bold;">Numero de Casa: </span>{{dire.numeroCasa}}</h3>
+                    <button mat-icon-button (click)="deleteDireccion(dire)">
+                        <mat-icon class="far fa-trash-alt"></mat-icon>
+					</button>
+
+                </mat-list-item>
+
+                <mat-divider *ngIf="!last" [inset]="true"></mat-divider>
+            </ng-template>
+        </mat-list>
+    </ng-template>
+</mat-card>
+
+<a mat-fab style="background-color: orange;" id="inferior" [routerLink]="['add']" class="fas fa-plus"></a>

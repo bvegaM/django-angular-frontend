@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<style>
+ #inferior{
+    color: #FFF;
+    background: #000;
+    position:absolute; /*El div será ubicado con relación a la pantalla*/
+    left:92%; /*A la derecha deje un espacio de 0px*/
+    right:0px; /*A la izquierda deje un espacio de 0px*/
+    bottom:5%; /*Abajo deje un espacio de 0px*/
+    height:50px; /*alto del div*/
+    z-index:0;
+ 
+ }
+
+</style>
+<mat-card>
+    <ng-template tdLoading="direccion.list">
+        <mat-list class="will-load">
+            <div class="pad"  *ngIf="personas?.length === 0" layout="row" layout-align="center">
+                <h3>No hay direcciones para mostrar</h3>
+            </div>
+            <ng-template let-per let-last="last" ngFor [ngForOf]="personas">
+                <mat-list-item>
+                    <mat-icon matListAvatar><a class="fas fa-user-tie" style="font-size: 30px;"></a></mat-icon>
+                    <h3 matLine><span style="font-weight: bold; font-size: 20px;">ID: {{per.codigo}}</span></h3>
+                    <h3 matLine><span style="font-weight: bold;">Nombres: </span>{{per.nombre}} {{per.apellido}}</h3>
+                    <h3 matLine><span style="font-weight: bold;">Edad: </span>{{per.edad}}</h3>
+                    <h3 matLine><span style="font-weight: bold;">Fecha de Nacimiento: </span>{{per.fechaNacimiento}}</h3>
+                    <h3 matLine><span style="font-weight: bold;">Genero: </span>{{per.sexo}}</h3>
+                    <h3 matLine><span style="font-weight: bold;">Direccion: </span>{{per.direccion}}</h3>
+                    <button mat-icon-button (click)="deletePersona(per)">
+                        <mat-icon class="far fa-trash-alt"></mat-icon>
+					</button>
+
+                </mat-list-item>
+
+                <mat-divider *ngIf="!last" [inset]="true"></mat-divider>
+            </ng-template>
+        </mat-list>
+    </ng-template>
+</mat-card>
+
+<a mat-fab style="background-color: orange;" id="inferior" [routerLink]="['add']">
+    <mat-icon class="fas fa-plus"></mat-icon>
+</a>

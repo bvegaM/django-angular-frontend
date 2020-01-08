@@ -1,0 +1,113 @@
+<mat-card>
+
+    <mat-card-title>Nueva Persona</mat-card-title>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+        <form #personaForm="ngForm">
+            <div layout="row">
+                <mat-form-field fles>
+                    <input matInput
+                     [(ngModel)]="persona.codigo"
+                     #elementCodigoControl="ngModel"
+                     type="number"
+                     name="Codigo"
+                     placeholder="Codigo"
+                     required>
+                     <mat-hint alig="start">
+                        <span [hidden]="elementCodigoControl.pristine || !elementCodigoControl.errors?.required" class="tc-red-600"> Requerido
+						</span>
+                     </mat-hint>
+                </mat-form-field>
+            </div>
+            <div layout="row">
+                <mat-form-field fles>
+                    <input matInput
+                     [(ngModel)]="persona.nombre"
+                     #elementNControl="ngModel"
+                     type="text"
+                     name="Nombre"
+                     maxlength="50"
+                     placeholder="Nombre"
+                     required>
+                     <mat-hint alig="start">
+                        <span [hidden]="elementNControl.pristine || !elementNControl.errors?.required" class="tc-red-600"> Requerido
+						</span>
+                     </mat-hint>
+                </mat-form-field>
+            </div>
+            <div layout="row">
+                <mat-form-field fles>
+                    <input matInput
+                     [(ngModel)]="persona.apellido"
+                     #elementAControl="ngModel"
+                     type="text"
+                     name="Apellido"
+                     maxlength="50"
+                     placeholder="Apellido"
+                     required>
+                     <mat-hint alig="start">
+                        <span [hidden]="elementAControl.pristine || !elementAControl.errors?.required" class="tc-red-600"> Requerido
+						</span>
+                     </mat-hint>
+                </mat-form-field>
+            </div>
+            <div layout="row">
+                <mat-form-field fles>
+                    <input matInput
+                     [(ngModel)]="persona.fechaNacimiento"
+                     #elementFControl="ngModel"
+                     type="date"
+                     name="FechaNacimiento"
+                     required>
+                     <mat-hint alig="start">
+                        <span [hidden]="elementFControl.pristine || !elementFControl.errors?.required" class="tc-red-600"> Requerido
+						</span>
+                     </mat-hint>
+                </mat-form-field>
+            </div>
+            <div layout="row">
+                <mat-form-field fles>
+                    <input matInput
+                     [(ngModel)]="persona.edad"
+                     #elementEControl="ngModel"
+                     type="number"
+                     name="Edad"
+                     placeholder="Edad"
+                     required>
+                     <mat-hint alig="start">
+                        <span [hidden]="elementEControl.pristine || !elementEControl.errors?.required" class="tc-red-600"> Requerido
+						</span>
+                     </mat-hint>
+                </mat-form-field>
+            </div>
+            <div layout="row">
+                <mat-form-field fles>
+                    <mat-select placeholder="sexo" [(ngModel)]="persona.sexo" name="Edad" required>
+                        <mat-option *ngFor="let sex of sexo" [value]="sex.valor">
+                            {{sex.descripcion}}
+                          </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div layout="row">
+                <mat-form-field fles>
+                    <mat-select placeholder="direcciones" [(ngModel)]="persona.direccion" name="Direccion" required>
+                        <mat-option *ngFor="let dir of direcciones" [value]="dir.codigo">
+                            {{dir.callePrincipal}} {{dir.calleSecundaria}}
+                          </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </form>
+    </mat-card-content>
+    <mat-divider></mat-divider>
+    <mat-card-actions>
+		<button mat-button [disabled]="!personaForm.valid" color="primary" (click)="createPersona()">
+		Guardar </button>
+		<button mat-button (click)="redirect()"> 
+		Volver </button>
+	</mat-card-actions>
+
+
+</mat-card>
+
